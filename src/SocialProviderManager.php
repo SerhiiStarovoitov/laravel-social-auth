@@ -55,7 +55,7 @@ class SocialProviderManager
             $this->social,
             $socialUser->getId(),
             $socialUser->token,
-            $socialUser->expiresIn
+            (isset($socialUser->expiresIn)) ? $socialUser->expiresIn : null
         );
 
         event(new SocialUserAttached($user, $this->social, $socialUser));
@@ -82,7 +82,7 @@ class SocialProviderManager
             $social,
             $socialUser->getId(),
             $socialUser->token,
-            $socialUser->expiresIn
+            (isset($socialUser->expiresIn)) ? $socialUser->expiresIn : null
         );
 
         event(new SocialUserCreated($NewUser));
